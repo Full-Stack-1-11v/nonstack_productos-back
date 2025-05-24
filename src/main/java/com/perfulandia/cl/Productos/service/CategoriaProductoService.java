@@ -30,6 +30,7 @@ public class CategoriaProductoService {
         }
     }
 
+
     public CategoriaProducto crearCategoria(CategoriaProducto categoria) throws Exception {
         if (categoria.getNombreCategoria() == null || categoria.getNombreCategoria().isEmpty()) {
             throw new Exception("El nombre de la categoría no puede estar vacío");
