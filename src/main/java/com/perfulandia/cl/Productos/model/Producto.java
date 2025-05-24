@@ -32,9 +32,6 @@ public class Producto {
     @Column(name = "precio_producto")
     private Double precioProducto;
 
-    @Column(name = "id_categoria_producto")
-    private Integer idCategoriaProducto;
-
     @Column(name = "stock_producto")
     private Integer stockProducto;
 

@@ -37,6 +37,53 @@ public class CategoriaProductoService {
         return categoriaRepository.save(categoria);
     }
 
-    
+    public CategoriaProducto putCategoria(CategoriaProducto categoria, Integer id) throws Exception {
+        if (!categoriaRepository.existsById(id)) {
+            throw new RuntimeException("No existe esa categoria con esa id");
+        }
+
+        CategoriaProducto categoriaProductoExistente = categoriaRepository.findById(id).get();
+
+        categoriaProductoExistente.setDescripcionCategoria(categoria.getDescripcionCategoria());
+        categoriaProductoExistente.setNombreCategoria(categoria.getNombreCategoria());
+
+        categoriaRepository.save(categoriaProductoExistente);
+        return categoriaProductoExistente;
+
+    }
+
+    public CategoriaProducto parcharCategoria(CategoriaProducto categoria, Integer id) throws Exception {
+        if (!categoriaRepository.existsById(id)) {
+            throw new RuntimeException("No existe esa categoria con esa id");
+        }
+
+        CategoriaProducto categoriaProductoExistente = categoriaRepository.findById(id).get();
+
+        if (categoria.getDescripcionCategoria() == null &&
+                categoria.getNombreCategoria() == null) {
+            throw new RuntimeException("Debe tener al menos un atributo a parchar.");
+        }
+
+        if (categoria.getDescripcionCategoria() != null) {
+            categoriaProductoExistente.setDescripcionCategoria(categoria.getDescripcionCategoria());
+        }
+
+        if (categoria.getNombreCategoria() != null) {
+            categoriaProductoExistente.setNombreCategoria(categoria.getNombreCategoria());
+        }
+
+        categoriaRepository.save(categoriaProductoExistente);
+        return categoriaProductoExistente;
+    }
+
+    public void borrarCategoria(Integer id) throws Exception{
+        if (!categoriaRepository.existsById(id)) {
+            throw new Exception("No existe esa categoria con esa id");
+        }
+
+        CategoriaProducto categoriaProductoExistente = categoriaRepository.findById(id).get();
+
+        categoriaRepository.delete(categoriaProductoExistente);
+    }
 
 }

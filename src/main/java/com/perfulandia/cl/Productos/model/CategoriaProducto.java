@@ -2,6 +2,8 @@ package com.perfulandia.cl.Productos.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,6 +19,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonPropertyOrder({"idCategoriaProducto", "nombreCategoria", "descripcionCategoria", "productos"}) // Raro que ocurra, pero esta anotacion ordena como arroja el json
 public class CategoriaProducto {
 
     @Id
