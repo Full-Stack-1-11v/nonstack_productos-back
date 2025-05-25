@@ -1,6 +1,9 @@
 package com.perfulandia.cl.Productos.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -37,6 +40,7 @@ public class Producto {
 
     @ManyToOne
     @JoinColumn(name = "id_categoria_producto")
+    @JsonBackReference
     private CategoriaProducto categoriaProducto;
 
 }

@@ -2,6 +2,8 @@ package com.perfulandia.cl.Productos.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import jakarta.persistence.CascadeType;
@@ -34,5 +36,6 @@ public class CategoriaProducto {
     private String nombreCategoria;
 
     @OneToMany(mappedBy = "categoriaProducto" , cascade = CascadeType.ALL , orphanRemoval = true)
+    @JsonManagedReference
     private List<Producto> productos;
 }
