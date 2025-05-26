@@ -73,7 +73,7 @@ public class ProductoController {
     @PatchMapping("/{id}")
     public ResponseEntity<?> patchProducto(@RequestBody Producto producto, @PathVariable Integer id) {
         try {
-            Producto productoPatch = productoService.putProducto(producto, id);
+            Producto productoPatch = productoService.parcharProducto(producto, id);
             return ResponseEntity.ok(productoPatch);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
